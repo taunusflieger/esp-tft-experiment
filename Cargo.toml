@@ -1,0 +1,36 @@
+[package]
+name = "esp-tft-experiment"
+version = "0.1.0"
+authors = ["Michael Zill <michael.zill@gmail.com>"]
+edition = "2021"
+resolver = "2"
+
+[profile.release]
+opt-level = "s"
+
+[profile.dev]
+debug = true    # Symbols are nice and they don't increase the size on Flash
+opt-level = "z"
+
+[features]
+pio = ["esp-idf-sys/pio"]
+
+[dependencies]
+esp-idf-sys = { version = "0.31.11", features = ["binstart"] }
+embedded-hal = { git = "https://github.com/rust-embedded/embedded-hal", tag = "v1.0.0-alpha.9" }
+esp-idf-hal = { version = "0.39", features = [] }
+display-interface = { version = "0.4" }
+display-interface-spi = { version = "0.4" }
+mipidsi = { git = "https://github.com/almindor/mipidsi" }
+embedded-graphics = "0.7.1"
+
+profont = "0.6.1"
+u8g2-fonts = "0.2.0"
+anyhow = "1.0"
+
+[build-dependencies]
+embuild = "0.30.4"
+anyhow = "1"
+
+[patch.crates-io]
+embedded-hal = { git = "https://github.com/rust-embedded/embedded-hal", tag = "v1.0.0-alpha.9" }
