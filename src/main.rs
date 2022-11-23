@@ -75,7 +75,7 @@ fn main() -> anyhow::Result<()> {
     )
     .unwrap();
 
-    let text = "Measurment: 14.1 m/s";
+    let text = "Wind: 14.1 m/s";
     let font = FontRenderer::new::<fonts::u8g2_font_helvB18_tf>();
     font.render_aligned(
         text,
@@ -87,7 +87,7 @@ fn main() -> anyhow::Result<()> {
     )
     .unwrap();
 
-    let text = "GPS Speed: 14.5 m/s";
+    let text = "GPS: 14.5 m/s";
     let font = FontRenderer::new::<fonts::u8g2_font_helvB18_tf>();
     font.render_aligned(
         text,
