@@ -35,6 +35,8 @@ fn main() -> anyhow::Result<()> {
 
     // power ST7789
     vdd.set_high()?;
+    backlight.set_drive_strength(DriveStrength::I40mA)?;
+    backlight.set_low()?;
 
     let mut delay = Ets;
 
@@ -58,7 +60,6 @@ fn main() -> anyhow::Result<()> {
         .init(&mut delay, Some(rst))
         .unwrap();
 
-    backlight.set_high()?;
     display.clear(Rgb565::BLACK).unwrap();
 
     let font = FontRenderer::new::<fonts::u8g2_font_logisoso16_tf>();
@@ -110,6 +111,8 @@ fn main() -> anyhow::Result<()> {
         &mut display,
     )
     .unwrap();
+
+    backlight.set_high()?;
 
     loop {
         thread::sleep(Duration::from_millis(1000));
